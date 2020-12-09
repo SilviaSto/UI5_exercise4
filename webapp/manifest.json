@@ -70,11 +70,11 @@
 				"type": "sap.ui.model.odata.v2.ODataModel",
 				"settings": {
 					"defaultOperationMode": "Server",
-					"defaultBindingMode": "OneWay",
-					"defaultCountMode": "Request"
+					"defaultBindingMode": "TwoWay",
+					"defaultCountMode": "Inline",
+					"preload": true
 				},
-				"dataSource": "ZALBUM_APP_SIS_SRV",
-				"preload": true
+				"dataSource": "ZALBUM_APP_SIS_SRV"
 			}
 		},
 		"resources": {
@@ -95,16 +95,17 @@
 			"routes": [{
 				"pattern": "",
 				"name": "Albums",
-				"target": "Albums"
+				"target": ["Albums"]
+			}, {
+				"pattern": "PhotoDetails",
+				"name": "PhotoDetails",
+				"target": ["PhotoDetails"]
 			}],
 			"targets": {
 				"Albums": {
-					"viewType": "XML",
-					"viewName": "Albums",
-					"viewLevel" : 1
+					"viewName": "Albums"
 				},
 				"PhotoDetails": {
-					"viewType": "XML",
 					"viewName": "PhotoDetails"
 				}
 			}

@@ -6,8 +6,12 @@ sap.ui.define([
 	"use strict";
 
 	return Controller.extend("kpmg.home.exercise4.controller.BaseController", {
-		navTo: function (psTarget, pmParameters, pbReplace) {
+		/*navTo: function (psTarget, pmParameters, pbReplace) {
 			this.getRouter().navTo(psTarget, pmParameters, pbReplace);
+		},*/
+			navTo: function (psTarget) {
+				console.log(psTarget)
+			this.getRouter().navTo(psTarget);
 		},
 		getRouter: function () {
 			return UIComponent.getRouterFor(this);
