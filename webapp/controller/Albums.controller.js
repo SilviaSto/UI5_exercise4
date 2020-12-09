@@ -1,14 +1,11 @@
 sap.ui.define([
-		"sap/ui/core/mvc/Controller"
+		"kpmg/home/exercise4/controller/BaseController"
 	],
-	function (Controller) {
+	function (BaseController) {
 		"use strict";
-
-		return Controller.extend("kpmg.home.exercise4.controller.Albums", {
-
+		return BaseController.extend("kpmg.home.exercise4.controller.Albums", {
 			onItemPress: function () {
-					var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-				oRouter.navTo("PhotoDetails");
+				this.getRouter().navTo("PhotoDetails");
 			}
 		});
 

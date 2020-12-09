@@ -1,7 +1,7 @@
 sap.ui.define([
-	 "sap/ui/core/mvc/Controller"
-], function (Controller) {
+	 "kpmg/home/exercise4/controller/BaseController"
+], function (BaseController) {
 	"use strict";
 
-	return Controller.extend("kpmg.home.exercise4.controller.PhotoDetails", {});
+	return BaseController.extend("kpmg.home.exercise4.controller.PhotoDetails", {});
 });
