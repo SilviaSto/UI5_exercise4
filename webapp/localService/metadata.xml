@@ -1,0 +1,90 @@
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
+		Uri="./IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value"><edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/></edmx:Reference>
+	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
+		Uri="./IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='LOCAL')/$value"><edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/></edmx:Reference>
+	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
+		Uri="./IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='LOCAL')/$value"><edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/></edmx:Reference>
+	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
+		Uri="./IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='LOCAL')/$value"><edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/></edmx:Reference>
+	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
+		Uri="./IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='LOCAL')/$value"><edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/></edmx:Reference>
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZALBUM_APP_SIS_SRV" xml:lang="en" sap:schema-version="1">
+			<EntityType Name="Album" sap:content-version="1">
+				<Key><PropertyRef Name="AlTitle"/></Key><Property Name="AlTitle" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Title" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="CreatedBy" Type="Edm.String" Nullable="false" MaxLength="45" sap:unicode="false" sap:label="Created by user"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="AlCategory" Type="Edm.String" Nullable="false" MaxLength="45" sap:unicode="false" sap:label="Category for album"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="CreatedDate" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="Date of creation"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><NavigationProperty Name="toPhotos" Relationship="ZALBUM_APP_SIS_SRV.AlbumsToPhotos" FromRole="FromRole_AlbumsToPhotos"
+					ToRole="ToRole_AlbumsToPhotos"/></EntityType>
+			<EntityType Name="Photo" sap:content-version="1">
+				<Key><PropertyRef Name="PhotoId"/><PropertyRef Name="AlTitle"/></Key><Property Name="PhotoId" Type="Edm.Guid" Nullable="false" sap:unicode="false" sap:label="UUID" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="AlTitle" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Title" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="TakenBy" Type="Edm.String" Nullable="false" MaxLength="45" sap:unicode="false" sap:label="Created by user"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="DateTaken" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="Date of creation"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Url" Type="Edm.String" Nullable="false" MaxLength="45" sap:unicode="false" sap:label="Image url" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><NavigationProperty Name="toAlbum" Relationship="ZALBUM_APP_SIS_SRV.AlbumsToPhotos" FromRole="ToRole_AlbumsToPhotos"
+					ToRole="FromRole_AlbumsToPhotos"/></EntityType>
+			<EntityType Name="File" m:HasStream="true" sap:content-version="1">
+				<Key><PropertyRef Name="FileName"/></Key><Property Name="FileName" Type="Edm.String" Nullable="false" MaxLength="200" sap:unicode="false" sap:label="Text (200 char)"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="FileDate" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="Current Date"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="FileTime" Type="Edm.Time" Nullable="false" Precision="0" sap:unicode="false" sap:label="Time" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="FileValue" Type="Edm.Binary" Nullable="false" sap:unicode="false" sap:label="Binary String" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Mimetype" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="ZC_AlbumsWithPhotosType" sap:label="Albums with photos consumption" sap:content-version="1">
+				<Key><PropertyRef Name="TitleForAlbum"/></Key><Property Name="TitleForAlbum" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Title" sap:quickinfo="Title for album"/><Property Name="CategoryForAlbum" Type="Edm.String" MaxLength="45" sap:label="Category for album"/><NavigationProperty Name="to_Photos" Relationship="ZALBUM_APP_SIS_SRV.assoc_FE15C1E3F6677DB4FEE6AF7A753B3938"
+					FromRole="FromRole_assoc_FE15C1E3F6677DB4FEE6AF7A753B3938" ToRole="ToRole_assoc_FE15C1E3F6677DB4FEE6AF7A753B3938"/></EntityType>
+			<EntityType Name="ZC_ALBUMSWITHPHOTOS_FIORIType" sap:label="Albums with photos consumption" sap:content-version="1">
+				<Key><PropertyRef Name="al_title"/></Key><Property Name="al_title" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Title" sap:quickinfo="Title for album"/><Property Name="created_by" Type="Edm.String" MaxLength="45" sap:label="Created by user"/><Property Name="al_category" Type="Edm.String" MaxLength="45" sap:label="Category for album"/><Property Name="created_date" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Date of creation"/><NavigationProperty Name="to_Photos" Relationship="ZALBUM_APP_SIS_SRV.assoc_AF3C4FF5DD3F9BEFA2A173DBE8E8351E"
+					FromRole="FromRole_assoc_AF3C4FF5DD3F9BEFA2A173DBE8E8351E" ToRole="ToRole_assoc_AF3C4FF5DD3F9BEFA2A173DBE8E8351E"/></EntityType>
+			<EntityType Name="ZC_PHOTOS_FIORIType" sap:label="Consumption for photos" sap:content-version="1">
+				<Key><PropertyRef Name="photo_id"/><PropertyRef Name="al_title"/></Key><Property Name="photo_id" Type="Edm.Guid" Nullable="false" sap:label="UUID"/><Property Name="al_title" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Title" sap:quickinfo="Title for album"/><Property Name="taken_by" Type="Edm.String" MaxLength="45" sap:label="Created by user"/><Property Name="date_taken" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Date of creation"/><Property Name="url" Type="Edm.String" MaxLength="45" sap:label="Image url"/></EntityType>
+			<EntityType Name="ZI_PhotosBasicType" sap:label="Basic View for Photos Details" sap:content-version="1">
+				<Key><PropertyRef Name="PhotoID"/><PropertyRef Name="TitleForAlbum"/></Key><Property Name="PhotoID" Type="Edm.Guid" Nullable="false" sap:label="UUID"/><Property Name="TitleForAlbum" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Title" sap:quickinfo="Title for album"/><Property Name="CreatedByUser" Type="Edm.String" MaxLength="45" sap:label="Created by user"/><Property Name="DateOfCreation" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Date of creation"/><Property Name="ImageUrl" Type="Edm.String" MaxLength="45" sap:label="Image url"/></EntityType>
+			<ComplexType Name="StatusCheck"><Property Name="Status" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Status message" sap:creatable="false"
+				sap:updatable="false" sap:sortable="false" sap:filterable="false"/></ComplexType>
+			<Association Name="assoc_FE15C1E3F6677DB4FEE6AF7A753B3938" sap:content-version="1"><End Type="ZALBUM_APP_SIS_SRV.ZC_AlbumsWithPhotosType" Multiplicity="1" Role="FromRole_assoc_FE15C1E3F6677DB4FEE6AF7A753B3938"/><End Type="ZALBUM_APP_SIS_SRV.ZI_PhotosBasicType" Multiplicity="*" Role="ToRole_assoc_FE15C1E3F6677DB4FEE6AF7A753B3938"/></Association>
+			<Association Name="assoc_AF3C4FF5DD3F9BEFA2A173DBE8E8351E" sap:content-version="1"><End Type="ZALBUM_APP_SIS_SRV.ZC_ALBUMSWITHPHOTOS_FIORIType" Multiplicity="1" Role="FromRole_assoc_AF3C4FF5DD3F9BEFA2A173DBE8E8351E"/><End Type="ZALBUM_APP_SIS_SRV.ZC_PHOTOS_FIORIType" Multiplicity="*" Role="ToRole_assoc_AF3C4FF5DD3F9BEFA2A173DBE8E8351E"/></Association>
+			<Association Name="AlbumsToPhotos" sap:content-version="1"><End Type="ZALBUM_APP_SIS_SRV.Album" Multiplicity="1" Role="FromRole_AlbumsToPhotos"/><End Type="ZALBUM_APP_SIS_SRV.Photo" Multiplicity="*" Role="ToRole_AlbumsToPhotos"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_AlbumsToPhotos"><PropertyRef Name="AlTitle"/></Principal>
+					<Dependent Role="ToRole_AlbumsToPhotos"><PropertyRef Name="AlTitle"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<EntityContainer Name="ZALBUM_APP_SIS_SRV_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true"
+				sap:supported-formats="atom json xlsx"><EntitySet Name="ZC_AlbumsWithPhotos" EntityType="ZALBUM_APP_SIS_SRV.ZC_AlbumsWithPhotosType" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:content-version="1"/><EntitySet Name="ZC_ALBUMSWITHPHOTOS_FIORI" EntityType="ZALBUM_APP_SIS_SRV.ZC_ALBUMSWITHPHOTOS_FIORIType" sap:content-version="1"/><EntitySet Name="ZC_PHOTOS_FIORI" EntityType="ZALBUM_APP_SIS_SRV.ZC_PHOTOS_FIORIType" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:content-version="1"/><EntitySet Name="ZI_PhotosBasic" EntityType="ZALBUM_APP_SIS_SRV.ZI_PhotosBasicType" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:content-version="1"/><EntitySet Name="AlbumSet" EntityType="ZALBUM_APP_SIS_SRV.Album" sap:searchable="true" sap:content-version="1"/><EntitySet Name="PhotoSet" EntityType="ZALBUM_APP_SIS_SRV.Photo" sap:searchable="true" sap:content-version="1"/><EntitySet Name="FileSet" EntityType="ZALBUM_APP_SIS_SRV.File" sap:searchable="true" sap:content-version="1"/>
+				<AssociationSet Name="AlbumsToPhotosSet" Association="ZALBUM_APP_SIS_SRV.AlbumsToPhotos" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="AlbumSet" Role="FromRole_AlbumsToPhotos"/><End EntitySet="PhotoSet" Role="ToRole_AlbumsToPhotos"/></AssociationSet>
+				<AssociationSet Name="assoc_FE15C1E3F6677DB4FEE6AF7A753B3938" Association="ZALBUM_APP_SIS_SRV.assoc_FE15C1E3F6677DB4FEE6AF7A753B3938"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="ZC_AlbumsWithPhotos" Role="FromRole_assoc_FE15C1E3F6677DB4FEE6AF7A753B3938"/><End EntitySet="ZI_PhotosBasic" Role="ToRole_assoc_FE15C1E3F6677DB4FEE6AF7A753B3938"/></AssociationSet>
+				<AssociationSet Name="assoc_AF3C4FF5DD3F9BEFA2A173DBE8E8351E" Association="ZALBUM_APP_SIS_SRV.assoc_AF3C4FF5DD3F9BEFA2A173DBE8E8351E"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="ZC_ALBUMSWITHPHOTOS_FIORI" Role="FromRole_assoc_AF3C4FF5DD3F9BEFA2A173DBE8E8351E"/><End EntitySet="ZC_PHOTOS_FIORI" Role="ToRole_assoc_AF3C4FF5DD3F9BEFA2A173DBE8E8351E"/></AssociationSet>
+				<FunctionImport Name="StatusCheck" ReturnType="ZALBUM_APP_SIS_SRV.StatusCheck" m:HttpMethod="POST" sap:action-for="ZALBUM_APP_SIS_SRV.Album"><Parameter Name="AlTitle" Type="Edm.String" Mode="In" MaxLength="30"/></FunctionImport>
+			</EntityContainer>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZALBUM_APP_SIS_SRV.ZALBUM_APP_SIS_SRV_Entities">
+				<Annotation Term="Aggregation.ApplySupported">
+					<Record>
+						<PropertyValue Property="Transformations">
+							<Collection>
+								<String>aggregate</String>
+								<String>groupby</String>
+								<String>filter</String>
+							</Collection>
+						</PropertyValue><PropertyValue Property="Rollup" EnumMember="None"/></Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZALBUM_APP_SIS_SRV.ZC_ALBUMSWITHPHOTOS_FIORIType">
+				<Annotation Term="Common.SemanticKey">
+					<Collection>
+						<PropertyPath>al_category</PropertyPath>
+					</Collection>
+				</Annotation>
+			</Annotations><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/ZALBUM_APP_SIS_SRV/$metadata"/><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/ZALBUM_APP_SIS_SRV/$metadata"/></Schema>
+	</edmx:DataServices>
+</edmx:Edmx>
