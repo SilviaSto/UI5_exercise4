@@ -3,7 +3,29 @@
 		<App id="app">
 			<pages>
 				<Page id="page" title="{i18n>title}">
-					<content></content>
+					<content>
+						<VBox fitContainer="true">
+
+							<Table id="albumsTable" inset="false" items="{ path: '/AlbumSet' }"
+								class="sapFDynamicPageAlignContent" width="auto">
+								<columns>
+									<Column width="12em">
+										<Text text="Title"/>
+									</Column>
+									<Column hAlign="End">
+										<Text text="Created by"/>
+									</Column>
+								</columns>
+								<items>
+									<ColumnListItem type="Navigation" press=".onListItemPress">
+										<cells>
+											<ObjectIdentifier title="{AlTitle}"/>
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+						</VBox>
+					</content>
 				</Page>
 			</pages>
 		</App>
