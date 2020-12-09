@@ -1,10 +1,7 @@
-<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="kpmg.home.exercise4.controller.PhotoDetails"
-	xmlns:html="http://www.w3.org/1999/xhtml">
-	<App>
-		<pages>
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="kpmg.home.exercise4.controller.PhotoDetails">
 			<Page title="Title">
-				<content></content>
+				<content>
+					<Text text="Hello"/>
+				</content>
 			</Page>
-		</pages>
-	</App>
 </mvc:View>

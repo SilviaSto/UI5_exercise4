@@ -1,33 +1,5 @@
 <mvc:View controllerName="kpmg.home.exercise4.controller.ViewMain" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
-	<Shell id="shell">
-		<App id="app">
-			<pages>
-				<Page id="page" title="{i18n>title}">
-					<content>
-						<VBox fitContainer="true">
-
-							<Table id="albumsTable" inset="false" items="{ path: '/AlbumSet' }"
-								class="sapFDynamicPageAlignContent" width="auto">
-								<columns>
-									<Column width="12em">
-										<Text text="Title"/>
-									</Column>
-									<Column hAlign="End">
-										<Text text="Created by"/>
-									</Column>
-								</columns>
-								<items>
-									<ColumnListItem type="Navigation" press=".onListItemPress">
-										<cells>
-											<ObjectIdentifier title="{AlTitle}"/>
-										</cells>
-									</ColumnListItem>
-								</items>
-							</Table>
-						</VBox>
-					</content>
-				</Page>
-			</pages>
-		</App>
+	<Shell>
+		<App id="app"/>
 	</Shell>
 </mvc:View>
