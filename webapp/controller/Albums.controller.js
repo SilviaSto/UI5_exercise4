@@ -5,7 +5,7 @@ sap.ui.define([
 		"use strict";
 		return BaseController.extend("kpmg.home.exercise4.controller.Albums", {
 			onItemPress: function (event) {
-				this.navTo("PhotoDetails");
+				this.navTo("AlbumDetails");
 			}
 		});
 

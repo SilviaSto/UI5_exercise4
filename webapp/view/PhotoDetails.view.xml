@@ -2,7 +2,7 @@
 	controllerName="kpmg.home.exercise4.controller.PhotoDetails">
 	<Page id="photoDetails" showNavButton="true" navButtonPress=".onNavBack">
 		<content>
-			<Text text="Hello!"></Text>
+			<Text text="Hey!"></Text>
 		</content>
 	</Page>
 </mvc:View>

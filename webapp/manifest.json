@@ -97,16 +97,17 @@
 				"name": "Albums",
 				"target": ["Albums"]
 			}, {
-				"pattern": "PhotoDetails",
-				"name": "PhotoDetails",
-				"target": ["PhotoDetails"]
+				"pattern": "AlbumDetails",
+				"name": "AlbumDetails",
+				"target": ["AlbumDetails"]
 			}],
 			"targets": {
 				"Albums": {
 					"viewName": "Albums"
 				},
-				"PhotoDetails": {
-					"viewName": "PhotoDetails"
+				"AlbumDetails": {
+					"viewType": "XML",
+					"viewName": "AlbumDetails"
 				}
 			}
 		}
