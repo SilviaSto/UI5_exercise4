@@ -97,7 +97,7 @@
 				"name": "Albums",
 				"target": ["Albums"]
 			}, {
-				"pattern": "AlbumDetails",
+				"pattern": "AlbumDetails/{AlTitle}",
 				"name": "AlbumDetails",
 				"target": ["AlbumDetails"]
 			}],
