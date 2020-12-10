@@ -26,14 +26,9 @@ sap.ui.define([
 				}
 			});
 		},
-		
-
-			// onItemPress: function (event) {
-			// 	this.navTo("AlbumDetails");
-			// }
-			
-			
+	
 			onItemPress : function(event){
+			
 			var item, ctx;
 			item = event.getSource();
 			ctx = item.getBindingContext();

@@ -1,9 +1,26 @@
 <mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="kpmg.home.exercise4.controller.AlbumDetails"
-	xmlns:html="http://www.w3.org/1999/xhtml">
-
-			<Page title="Photo Album" showNavButton="true" navButtonPress=".onNavBack">
+	xmlns:f="sap.ui.layout.form" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page title="Photo Album" showNavButton="true" navButtonPress=".onNavBack">
+		<content>
+			<Panel id="albumPanel" width="auto" class="sapUiResponsiveMargin sapUiNoContentPadding">
+				<headerToolbar>
+					<Toolbar>
+						<Title text="{AlTitle}" level="H2"/>
+						<ToolbarSpacer/>
+					</Toolbar>
+				</headerToolbar>
 				<content>
-					
+					<f:SimpleForm minWidth="1024" editable="false" layout="ResponsiveGridLayout" labelSpanL="3" labelSpanM="3" emptySpanL="4" emptySpanM="4"
+						columnsL="1" columnsM="1">
+						<f:content>
+							<Label text="{i18n>albumTitle}"/>
+							<Text text="{AlbumSet>/AlTitle}"/>
+							<Label text="{i18n>createdBy}"/>
+							<Text text="{AlbumSet>/CreatedBy}"/>
+						</f:content>
+					</f:SimpleForm>
 				</content>
-			</Page>
+			</Panel>
+		</content>
+	</Page>
 </mvc:View>
